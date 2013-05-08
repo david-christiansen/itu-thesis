@@ -14,6 +14,7 @@ TODO (that I plan to do)
 ------------------------
  * Make dependencies on non-free fonts optional
  * Further prettification
+ * Show all the needed info on the title page
 
 TODO (for someone else)
 -----------------------
