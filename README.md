@@ -18,3 +18,4 @@ TODO (that I plan to do)
 TODO (for someone else)
 -----------------------
  * Make bilingual, so Danish headings and such work on the title page, and so a Danish version of the logo is selected
+ * Make it work easily in LyX
