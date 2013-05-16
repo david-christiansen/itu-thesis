@@ -11,23 +11,31 @@
 %% Listings
 \RequirePackage{listings}
 \lstset{frame=tb,
-  aboveskip=3mm,
-  belowskip=3mm,
+%  aboveskip=3mm,
+%  belowskip=3mm,
   showstringspaces=false,
   basicstyle={\small\ttfamily},
   numbers=none,
   keywordstyle=\bfseries,
   commentstyle=\itshape,
-  numberbychapter=true
+  numberbychapter=true,
+  captionpos=b
 }
 
 \lstnewenvironment{code}[1][]%
 {
-   \noindent
-   \minipage{\linewidth}
-   \vspace{0.5\baselineskip}
-   \lstset{#1}}
-{\endminipage}
+   \lstset{#1}
+}{
+}
+\definecolor{shadecolor}{gray}{0.9}
+\newenvironment{aside}{
+  \noindent\begin{shaded}
+  \begin{minipage}[t]{0.05\textwidth}{\sffamily \bfseries Aside:}\end{minipage}
+  \hspace{0.1\textwidth}
+  \begin{minipage}[t]{0.75\textwidth}
+}{
+  \end{minipage}\end{shaded}
+}
 
 %% Get \maketitle to produce something nice for ITU
 \setlength{\droptitle}{5cm}
@@ -40,9 +48,16 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 
+\usepackage{palatino}
+\linespread{1.05} % palatino needs a bit more space
+\usepackage[sc]{mathpazo} % math font that matches palatino
+% TODO: Consider osf in mathpazo
+
+% Use Optima for sans-serif
+\renewcommand*\sfdefault{uop}
+
 % Luxi Mono is an attractive typewriter font with bold and italic
 \usepackage[scaled]{luximono}
-\usepackage{palatino}
 
 %% Abstract sans serif
 \renewcommand{\abstractnamefont}{\Large\sffamily}
@@ -76,11 +91,20 @@
 \setsubsecheadstyle{\large\sffamily\raggedright} % set sans serif subsection font
 
 %% Captions sans serif
-\captionnamefont{\sffamily}
-\captiontitlefont{\sffamily}
-\subcaptionfont{\sffamily}
-\subcaptionlabelfont{\sffamily}
+\captionnamefont{\small\sffamily}
+\captiontitlefont{\small\sffamily}
+\subcaptionfont{\footnotesize\sffamily}
+\subcaptionlabelfont{\footnotesize\sffamily}
 
+%% Page headings
+\nouppercaseheads
+\copypagestyle{ituheadings}{headings}
+\makeevenhead{ituheadings}{\sffamily\thepage}{}{\normalfont\sffamily\leftmark}
+\makeoddhead{ituheadings}{\normalfont\sffamily\rightmark}{}{\sffamily\thepage}
+\pagestyle{ituheadings}
+
+\makeevenfoot{plain}{}{\sffamily\thepage}{}
+\makeoddfoot{plain}{}{\sffamily\thepage}{}
 
 %% Mark term definitions
 \newcommand{\termfont}{\itshape}
@@ -108,6 +132,7 @@
 
 %%% typesets the TITLE page
 \newcommand{\thetitlepage}{
+  \thispagestyle{empty}
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.center)]
     \node[align=center,font=\sffamily\Huge] (title) at (0, 3cm){
       \itutitle
@@ -116,6 +141,13 @@
       \ituauthor
     };
   \end{tikzpicture}
+  \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south west), align=left, font=\sffamily\large]
+    \node[anchor=south west] (meta) at (2.5cm, 5cm) {
+      Supervisor: Peter Sestoft\\
+      Submitted: June 10, 2013
+    };
+  \end{tikzpicture}
+
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south east)]
     \node[anchor=south east] (logo) at (-2.5cm,2.5cm) {
       \includegraphics[width=7cm]{ITUlogoukorange}
