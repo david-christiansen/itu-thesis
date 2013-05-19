@@ -128,6 +128,10 @@
 \newcommand{\settitle}[1]{\def\itutitle{#1}}
 % you
 \newcommand{\setauthor}[1]{\def\ituauthor{#1}}
+% your supervisor
+\newcommand{\setsupervisor}[1]{\def\itusupervisor{#1}}
+% submission date
+\newcommand{\setdate}[1]{\def\itudate{#1}}
 
 
 %%% typesets the TITLE page
@@ -143,8 +147,11 @@
   \end{tikzpicture}
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south west), align=left, font=\sffamily\large]
     \node[anchor=south west] (meta) at (2.5cm, 2.5cm) {
-      Supervisor: Peter Sestoft\\
-      Submitted: June 10, 2013
+      \begin{tabular}{l@{ }l}
+      Supervisor: & \itusupervisor\\
+      Submitted: & \itudate
+      \end{tabular}
+
     };
   \end{tikzpicture}
 
