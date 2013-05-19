@@ -4,6 +4,11 @@
 %% This document class is based on memoir
 \LoadClass[a4paper, showtrims, 12pt, twoside, openright, onecolumn, final]{memoir}
 
+\RequirePackage[danish,english]{babel}
+\RequirePackage{csquotes}
+
+
+
 %% Graphics
 \RequirePackage{tikz}
 \usetikzlibrary{positioning}
@@ -148,8 +153,8 @@
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south west), align=left, font=\sffamily\large]
     \node[anchor=south west] (meta) at (2.5cm, 2.5cm) {
       \begin{tabular}{l@{ }l}
-      Supervisor: & \itusupervisor\\
-      Submitted: & \itudate
+      \iflanguage{danish}{Vejleder}{Supervisor}: & \itusupervisor\\
+      \iflanguage{danish}{Afleveret}{Submitted}: & \itudate
       \end{tabular}
 
     };
@@ -157,7 +162,11 @@
 
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south east)]
     \node[anchor=south east] (logo) at (-2.5cm,2.5cm) {
-      \includegraphics[width=7cm]{english}
+      \iflanguage{danish}{
+        \includegraphics[width=7cm]{dansk}
+      }{
+        \includegraphics[width=7cm]{english}
+      }
     };
   \end{tikzpicture}
 }
