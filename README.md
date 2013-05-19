@@ -4,6 +4,9 @@ itu-thesis
 An unofficial LaTeX document class for ITU theses. This is a work in progress -- please
 send suggestions and bug reports should you be so bold as to use it!
 
+This is really only relevant if you plan on writing something long enough to
+have chapters.
+
 Features
 --------
 
