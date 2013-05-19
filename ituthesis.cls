@@ -142,7 +142,7 @@
     };
   \end{tikzpicture}
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south west), align=left, font=\sffamily\large]
-    \node[anchor=south west] (meta) at (2.5cm, 5cm) {
+    \node[anchor=south west] (meta) at (2.5cm, 2.5cm) {
       Supervisor: Peter Sestoft\\
       Submitted: June 10, 2013
     };
