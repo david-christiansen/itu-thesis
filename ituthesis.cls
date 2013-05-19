@@ -150,7 +150,7 @@
 
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south east)]
     \node[anchor=south east] (logo) at (-2.5cm,2.5cm) {
-      \includegraphics[width=7cm]{ITUlogoukorange}
+      \includegraphics[width=7cm]{english}
     };
   \end{tikzpicture}
 }
