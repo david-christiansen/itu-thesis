@@ -27,7 +27,7 @@ TODO (for someone else)
 Instructions
 ------------
 
-Use \thetitlepage to create a fancy title page. It relies on the following
+Use ````\thetitlepage```` to create a fancy title page. It relies on the following
 commands having been run in the preamble:
 
     \settitle{TITLE HERE}
