@@ -6,7 +6,7 @@
 
 \RequirePackage[danish,english]{babel}
 \RequirePackage{csquotes}
-
+\RequirePackage{ifthen}
 
 
 %% Graphics
@@ -134,7 +134,12 @@
 % you
 \newcommand{\setauthor}[1]{\def\ituauthor{#1}}
 % your supervisor
+\provideboolean{itumultisup}
+\setboolean{itumultisup}{false}
 \newcommand{\setsupervisor}[1]{\def\itusupervisor{#1}}
+\newcommand{\setextrasupervisor}[1]{
+  \def\itusupervisorextra{#1}
+  \setboolean{itumultisup}{true}}
 % submission date
 \newcommand{\setdate}[1]{\def\itudate{#1}}
 
@@ -152,11 +157,17 @@
   \end{tikzpicture}
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south west), align=left, font=\sffamily\large]
     \node[anchor=south west] (meta) at (2.5cm, 2.5cm) {
-      \begin{tabular}{l@{ }l}
-      \iflanguage{danish}{Vejleder}{Supervisor}: & \itusupervisor\\
-      \iflanguage{danish}{Afleveret}{Submitted}: & \itudate
-      \end{tabular}
-
+      \begingroup
+        \begin{tabular}{l@{ }l}
+          \iflanguage{danish}{
+            Vejleder\ifthenelse{\boolean{itumultisup}}{e}{}:
+          }{
+            Supervisor\ifthenelse{\boolean{itumultisup}}{s}{}:
+          } & \itusupervisor\\
+          \ifthenelse{\boolean{itumultisup}}{& \itusupervisorextra \\}{}
+          \iflanguage{danish}{Afleveret}{Submitted}: & \itudate
+        \end{tabular}
+      \endgroup
     };
   \end{tikzpicture}
 
