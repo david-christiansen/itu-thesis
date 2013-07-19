@@ -5,9 +5,6 @@
 \LoadClass[a4paper, showtrims, 12pt, twoside, openright, onecolumn, final]{memoir}
 
 \RequirePackage[danish,english]{babel}
-\RequirePackage{csquotes}
-\RequirePackage{ifthen}
-
 
 %% Graphics
 \RequirePackage{tikz}
@@ -134,14 +131,18 @@
 % you
 \newcommand{\setauthor}[1]{\def\ituauthor{#1}}
 % your supervisor
-\provideboolean{itumultisup}
-\setboolean{itumultisup}{false}
 \newcommand{\setsupervisor}[1]{\def\itusupervisor{#1}}
-\newcommand{\setextrasupervisor}[1]{
-  \def\itusupervisorextra{#1}
-  \setboolean{itumultisup}{true}}
+\newcommand{\setextrasupervisor}[1]{\def\itusupervisorextra{#1}}
 % submission date
 \newcommand{\setdate}[1]{\def\itudate{#1}}
+
+\makeatletter
+\def\sups{\iflanguage{danish}%
+  {Vejleder\@ifundefined{itusupervisorextra}{}{e}}%
+  {Supervisor\@ifundefined{itusupervisorextra}{}{s}}%
+}
+\def\extrasup{\@ifundefined{itusupervisorextra}{}{& \itusupervisorextra \\}}
+\makeatother
 
 
 %%% typesets the TITLE page
@@ -159,12 +160,8 @@
     \node[anchor=south west] (meta) at (2.5cm, 2.5cm) {
       \begingroup
         \begin{tabular}{l@{ }l}
-          \iflanguage{danish}{
-            Vejleder\ifthenelse{\boolean{itumultisup}}{e}{}:
-          }{
-            Supervisor\ifthenelse{\boolean{itumultisup}}{s}{}:
-          } & \itusupervisor\\
-          \ifthenelse{\boolean{itumultisup}}{& \itusupervisorextra \\}{}
+          \sups : & \itusupervisor\\
+          \extrasup
           \iflanguage{danish}{Afleveret}{Submitted}: & \itudate
         \end{tabular}
       \endgroup
