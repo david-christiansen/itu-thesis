@@ -79,11 +79,22 @@
 \renewcommand{\partnumfont}{\Huge\sffamily}
 
 %% Chapter headers sans serif
-\chapterstyle{default} % try also: default , section , hangnum , companion , article, demo
+\newcommand{\joint}[1]{\def\thejoint{#1}}
+\newcommand{\originally}[1]{\def\theorigin{#1}}
 
-\renewcommand{\chaptitlefont}{\normalfont\Huge\sffamily\raggedright} % set sans serif chapter title font
-\renewcommand{\chapnamefont}{\normalfont\Huge\sffamily\raggedright}
-\renewcommand{\chapnumfont}{\normalfont\Huge\sffamily\raggedright} % set sans serif chapter number font
+\makeatletter
+\def\ori{\@ifundefined{theorigin}{}{Originally published in: \theorigin}}
+\def\joi{\@ifundefined{thejoint}{}{Joint work with: \thejoint}}
+\makeatother
+
+\makechapterstyle{ituchapter}{%
+  \renewcommand{\chaptitlefont}{\normalfont\Huge\sffamily\raggedright} % set sans serif chapter title font
+  \renewcommand{\chapnamefont}{\normalfont\Huge\sffamily\raggedright}
+  \renewcommand{\chapnumfont}{\normalfont\Huge\sffamily\raggedright} % set sans serif chapter number Font
+  \renewcommand{\afterchaptertitle}{\par\nobreak \vskip 15pt \small \normalfont\sffamily{\ori \vskip 3pt \joi} \vskip \afterchapskip \global\let\theorigin\relax \global\let\thejoint\relax}
+}
+
+\chapterstyle{ituchapter} % try also: default , section , hangnum , companion , article, demo
 
 %% Section headers sans serif
 %\hangsecnum % hang the section numbers into the margin to match \chapterstyle{hangnum}
