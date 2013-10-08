@@ -55,8 +55,11 @@
 \usepackage[sc]{mathpazo} % math font that matches palatino
 % TODO: Consider osf in mathpazo
 
-% Use Optima for sans-serif
-\renewcommand*\sfdefault{uop}
+% Use paratype sans narrow for sans-serif fonts
+% hannes likes this more than optima because optima is nearly a serif font
+\usepackage{PTSansNarrow}
+%% Use Optima for sans-serif
+%\renewcommand*\sfdefault{uop}
 
 % Luxi Mono is an attractive typewriter font with bold and italic
 \usepackage[scaled]{luximono}
@@ -88,13 +91,17 @@
 \makeatother
 
 \makechapterstyle{ituchapter}{%
-  \renewcommand{\chaptitlefont}{\normalfont\Huge\sffamily\raggedright} % set sans serif chapter title font
-  \renewcommand{\chapnamefont}{\normalfont\Huge\sffamily\raggedright}
-  \renewcommand{\chapnumfont}{\normalfont\Huge\sffamily\raggedright} % set sans serif chapter number Font
+  \renewcommand{\chaptitlefont}{\normalfont\HUGE\sffamily\raggedright} % set sans serif chapter title font
+  \renewcommand{\chapnamefont}{\normalfont\Large\sffamily\raggedright}
+  \renewcommand{\chapnumfont}{\normalfont\Large\sffamily\raggedright} % set sans serif chapter number Font
   \renewcommand{\afterchaptertitle}{\par\nobreak \vskip 15pt \small \normalfont\sffamily{\ori \vskip 3pt \joi} \vskip \afterchapskip \global\let\theorigin\relax \global\let\thejoint\relax}
 }
 
 \chapterstyle{ituchapter} % try also: default , section , hangnum , companion , article, demo
+
+% do not draw a line to separate footnotes, instead use more spacing
+\renewcommand*{\footnoterule}{\vskip 10pt}
+
 
 %% Section headers sans serif
 %\hangsecnum % hang the section numbers into the margin to match \chapterstyle{hangnum}
@@ -104,6 +111,12 @@
 \setsubsecheadstyle{\large\sffamily\raggedright} % set sans serif subsection font
 
 %% Captions sans serif
+\captionnamefont{\small\sffamily\itshape}
+\captiontitlefont{\small\sffamily\itshape}
+%\subcaptionfont{\footnotesize\sffamily}
+%\subcaptionlabelfont{\footnotesize\sffamily}
+
+
 \captionnamefont{\small\sffamily}
 \captiontitlefont{\small\sffamily}
 \subcaptionfont{\footnotesize\sffamily}
@@ -112,8 +125,8 @@
 %% Page headings
 \nouppercaseheads
 \copypagestyle{ituheadings}{headings}
-\makeevenhead{ituheadings}{\sffamily\thepage}{}{\normalfont\sffamily\leftmark}
-\makeoddhead{ituheadings}{\normalfont\sffamily\rightmark}{}{\sffamily\thepage}
+\makeevenhead{ituheadings}{{\small\sffamily\thepage}}{}{{\small\normalfont\sffamily\leftmark}}
+\makeoddhead{ituheadings}{{\small\normalfont\sffamily\rightmark}}{}{{\small\sffamily\thepage}}
 \pagestyle{ituheadings}
 
 \makeevenfoot{plain}{}{\sffamily\thepage}{}
@@ -126,6 +139,10 @@
 
 \newlength{\linespace}
 \setlength{\linespace}{\baselineskip}
+
+% no page number on chapter and part page!
+\aliaspagestyle{chapter}{empty}
+\aliaspagestyle{part}{empty}
 
 %%%% for the title page and approval page.
 \newlength{\toptafiddle}
@@ -150,9 +167,9 @@
 \makeatletter
 \def\sups{\iflanguage{danish}%
   {Vejleder\@ifundefined{itusupervisorextra}{}{e}}%
-  {Supervisor\@ifundefined{itusupervisorextra}{}{s}}%
+  {Advisor\@ifundefined{itusupervisorextra}{}{s}}%
 }
-\def\extrasup{\@ifundefined{itusupervisorextra}{}{& \itusupervisorextra \\}}
+\def\extrasup{\@ifundefined{itusupervisorextra}{}{\iflanguage{danish}{ og}{ and} \itusupervisorextra}}
 \makeatother
 
 
@@ -169,13 +186,8 @@
   \end{tikzpicture}
   \begin{tikzpicture}[remember picture,overlay,line width=0mm,shift=(current page.south west), align=left, font=\sffamily\large]
     \node[anchor=south west] (meta) at (2.5cm, 2.5cm) {
-      \begingroup
-        \begin{tabular}{l@{ }l}
-          \sups : & \itusupervisor\\
-          \extrasup
-          \iflanguage{danish}{Afleveret}{Submitted}: & \itudate
-        \end{tabular}
-      \endgroup
+      \sups : \itusupervisor \extrasup\\
+      \iflanguage{danish}{Afleveret}{Submitted}: \itudate
     };
   \end{tikzpicture}
 
