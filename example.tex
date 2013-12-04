@@ -2,7 +2,7 @@
 
 \settitle{Towards a PhD for Fun and Profit}
 \setauthor{Nestor Makhno}
-\setsupervisor{Mikhail Alexandrovich Bakunin}
+\setsupervisor{Mikhail Bakunin}
 \setextrasupervisor{Emma Goldman}
 \setdate{December 1917}
 
@@ -22,6 +22,17 @@ This is an abstract
 \tableofcontents
 
 \mainmatter
+
+%from memoir documentation:
+%TeX tries very hard to keep text lines justified while keeping the interword spacing as constant as possible, but sometimes fails and complains about an overfull hbox.
+%The default mode for LaTeX typesetting is \fussy where the (variation of) interword spacing in justified text is kept to a minimum. Following the \sloppy declaration there may be a much looser setting of justified text.
+%Additionally the class provides the \midsloppy declaration which allows a setting somewhere between \fussy and \sloppy.
+%fewer overfull lines than \fussy, and fewer obvious large interword spacing than with \sloppy.
+%the memoir manual also uses \midsloppy!
+\midsloppy
+% try harder to avoid widows and orphans
+\sloppybottom
+
 \chapter{Introduction}
 Introductionary material
 
