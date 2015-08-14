@@ -7,6 +7,7 @@
 \setdate{December 1917}
 
 \begin{document}
+% Uncomment the following to set the default language of the document to Danish. This affects hyphenation as well as headers and the like.
 %\selectlanguage{danish}
 
 \frontmatter
@@ -14,8 +15,15 @@
 \thetitlepage
 \newpage
 
-\chapter*{Abstract}
-This is an abstract
+\begin{abstract}
+This is an English abstract. English is the default language of this document.
+\end{abstract}
+
+\begin{otherlanguage}{danish}
+  \begin{abstract}
+    Dette er et resumé på dansk, som er det alternative sprog i dokumentet.
+  \end{abstract}
+\end{otherlanguage}
 
 \cleardoublepage
 \setcounter{tocdepth}{1}
@@ -50,6 +58,14 @@ More text here.
 \joint{Emma Goldman}
 \chapter{At the Same Time Somewhere Else}
 ... happened something else
+
+Here's some mathematics:
+\begin{displaymath}
+  \frac{
+    \Gamma, x:\tau_1\;\vdash\; e \;:\; \tau_2
+  }{
+    \Gamma\;\vdash\;\lambda x : \tau_1 . e \;:\; \tau_1\to\tau_2}
+\end{displaymath}
 
 \originally{My autobiography; 1934}
 \chapter{Conclusion}

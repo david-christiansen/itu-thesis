@@ -4,7 +4,15 @@
 %% This document class is based on memoir
 \LoadClass[a4paper, showtrims, 12pt, twoside, openright, onecolumn, final]{memoir}
 
-\RequirePackage[danish,english]{babel}
+\RequirePackage{ifxetex}
+
+\ifxetex
+    \RequirePackage{polyglossia}
+    \setdefaultlanguage{english}
+    \setotherlanguage{danish}
+\else
+    \RequirePackage[danish,english]{babel}
+\fi
 
 %% Graphics
 \RequirePackage{tikz}
@@ -44,20 +52,38 @@
 
 %% More comprehensive math
 \usepackage{amsmath}
-\usepackage{amsfonts}
+\ifxetex
+    \usepackage{unicode-math}
+\else
+    \usepackage{amsfonts}
+\fi
 
-%% Better fonts
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
+\ifxetex
+    \usepackage{fontspec}
+    \setmainfont
+       [ BoldFont       = texgyrepagella-bold.otf ,
+         ItalicFont     = texgyrepagella-italic.otf ,
+         BoldItalicFont = texgyrepagella-bolditalic.otf ]
+       {texgyrepagella-regular.otf}
+    \setsansfont{PT Sans Narrow}
+\else
+    %% Better fonts
+    \usepackage[T1]{fontenc}
+    \usepackage{textcomp}
+    \usepackage{palatino}
+    \usepackage[sc]{mathpazo} % math font that matches palatino
+    % TODO: Consider osf in mathpazo
+    % PT Sans Narrow for sans serif
+    \usepackage{PTSansNarrow}
+\fi
 
-\usepackage{palatino}
+
 \linespread{1.05} % palatino needs a bit more space
-\usepackage[sc]{mathpazo} % math font that matches palatino
-% TODO: Consider osf in mathpazo
+
 
 % Use paratype sans narrow for sans-serif fonts
 % hannes likes this more than optima because optima is nearly a serif font
-\usepackage{PTSansNarrow}
+
 %% Use Optima for sans-serif
 %\renewcommand*\sfdefault{uop}
 
