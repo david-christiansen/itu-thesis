@@ -66,6 +66,7 @@
          BoldItalicFont = texgyrepagella-bolditalic.otf ]
        {texgyrepagella-regular.otf}
     \setsansfont{PT Sans Narrow}
+    \setmonofont[Scale=0.9]{Luxi Mono}
 \else
     %% Better fonts
     \usepackage[T1]{fontenc}
@@ -75,6 +76,9 @@
     % TODO: Consider osf in mathpazo
     % PT Sans Narrow for sans serif
     \usepackage{PTSansNarrow}
+    % Luxi Mono is an attractive typewriter font with bold and italic
+    \usepackage[scaled]{luximono}
+
 \fi
 
 
@@ -87,8 +91,6 @@
 %% Use Optima for sans-serif
 %\renewcommand*\sfdefault{uop}
 
-% Luxi Mono is an attractive typewriter font with bold and italic
-\usepackage[scaled]{luximono}
 
 %% Abstract sans serif
 \renewcommand{\abstractnamefont}{\Large\sffamily}

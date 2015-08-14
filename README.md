@@ -46,6 +46,8 @@ XeTeX
 -----
 This package now has preliminary support for XeLaTeX. In particular, it correctly determines whether it should load Babel or Polyglossia, and it uses TrueType or Opentype versions of fonts if they are available and XeTeX is being used.
 
+Because XeTeX uses the operating system's font collection, you'll need to install TrueType or OpenType versions of the relevant fonts. Luxi Mono is available in this format, as is the sans serif font PT Sans Narrow. The Palatino-like serif font is Tex Gyre Pagella, which should ship with most TexLive distributions in OpenType format.
+
 Instructions
 ------------
 

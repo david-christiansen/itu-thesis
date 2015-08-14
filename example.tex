@@ -55,6 +55,13 @@ Some text.
 \subsubsection{A subsubsection}
 More text here.
 
+Here's some verbatim text:
+\begin{verbatim}
+data Vect : Nat -> Type -> Type where
+  Nil : Vect 0 a
+  (::) : a -> Vect n a -> Vect (1 + n) a
+\end{verbatim}
+
 \joint{Emma Goldman}
 \chapter{At the Same Time Somewhere Else}
 ... happened something else
