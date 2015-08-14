@@ -72,8 +72,12 @@
 \renewcommand{\cftpartfont}{\normalfont\sffamily\bfseries}
 \renewcommand{\cftchapterfont}{\normalfont\sffamily}
 \renewcommand{\cftsectionfont}{\normalfont\sffamily}
+\renewcommand{\cftsubsectionfont}{\normalfont\sffamily}
+\renewcommand{\cftsubsubsectionfont}{\normalfont\sffamily}
 \renewcommand{\cftchapterpagefont}{\normalfont\sffamily}
 \renewcommand{\cftsectionpagefont}{\normalfont\sffamily}
+\renewcommand{\cftsubsectionpagefont}{\normalfont\sffamily}
+\renewcommand{\cftsubsubsectionpagefont}{\normalfont\sffamily}
 \setsecnumdepth{chapter}
 
 %% Parts sans serif
@@ -109,6 +113,7 @@
 
 \setsecheadstyle{\Large\sffamily\raggedright} % set sans serif section font
 \setsubsecheadstyle{\large\sffamily\raggedright} % set sans serif subsection font
+\setsubsubsecheadstyle{\sffamily\raggedright} % Bold subsubsection headers
 
 %% Captions sans serif
 \captionnamefont{\small\sffamily\itshape}
