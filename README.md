@@ -24,6 +24,25 @@ TODO (for someone else)
 -----------------------
  * Make it work easily in LyX
 
+Non-free fonts (Luxi Mono)
+--------------------------
+By default, the document class relies on the Luxi Mono font for typewriter text (such as that produced by `\texttt`, `verbatim` and friends). Luxi Mono is used because it's a bit narrower than the default fonts, because it looks nice, and because it has bold and italic variants. However, your TeX system probably does not come with it. You can get it with the `getnonfreefonts-sys` script.
+
+The commands will look something like this:
+```
+$ wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+$ chmod u+x install-getnonfreefonts
+$ sudo ./install-getnonfreefonts
+```
+If your Texlive installation is in your home directory, please omit the `sudo`. Then, use
+```
+sudo getnonfreefonts-sys luximono
+```
+to retrieve the `luximono` font.
+
+Please check the above instructions against the documentation for your TeX distribution. In particular, they have only been tested on GNU/Linux and Mac OS X - Windows users running MikTeX may have an easier graphical utility available.
+
+
 Instructions
 ------------
 
