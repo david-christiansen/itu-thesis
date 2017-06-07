@@ -36,7 +36,7 @@ $ sudo ./install-getnonfreefonts
 ```
 If your Texlive installation is in your home directory, please omit the `sudo`. Then, use
 ```
-sudo getnonfreefonts-sys luximono
+sudo getnonfreefonts --sys luximono
 ```
 to retrieve the `luximono` font.
 
