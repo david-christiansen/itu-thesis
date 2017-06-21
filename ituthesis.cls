@@ -47,6 +47,11 @@
   \end{minipage}\end{shaded}
 }
 
+\newif\if@freefonts \@freefontsfalse
+
+\DeclareOption{freefonts}{\@freefontstrue}
+\ProcessOptions\relax
+
 %% Get \maketitle to produce something nice for ITU
 \setlength{\droptitle}{5cm}
 
@@ -66,7 +71,13 @@
          BoldItalicFont = texgyrepagella-bolditalic.otf ]
        {texgyrepagella-regular.otf}
     \setsansfont{PT Sans Narrow}
-    \setmonofont[Scale=0.9]{Luxi Mono}
+
+    \if@freefonts
+      \setmonofont[Scale=0.9]{DejaVu Sans Mono}
+    \else
+      % Luxi Mono is an attractive typewriter font with bold and italic
+      \setmonofont[Scale=0.9]{Luxi Mono}
+    \fi
 \else
     %% Better fonts
     \usepackage[T1]{fontenc}
@@ -76,9 +87,12 @@
     % TODO: Consider osf in mathpazo
     % PT Sans Narrow for sans serif
     \usepackage{PTSansNarrow}
-    % Luxi Mono is an attractive typewriter font with bold and italic
-    \usepackage[scaled]{luximono}
 
+    \if@freefonts
+    \usepackage[scaled]{DejaVuSansMono}
+    \else
+    \usepackage[scaled]{luximono}
+    \fi
 \fi
 
 

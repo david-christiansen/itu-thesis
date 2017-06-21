@@ -16,7 +16,6 @@ Features
 
 TODO (that I plan to do)
 ------------------------
- * Make dependencies on non-free fonts optional
  * Further prettification
  * Show all the needed info on the title page
 
@@ -41,6 +40,10 @@ sudo getnonfreefonts --sys luximono
 to retrieve the `luximono` font.
 
 Please check the above instructions against the documentation for your TeX distribution. In particular, they have only been tested on GNU/Linux and Mac OS X - Windows users running MikTeX may have an easier graphical utility available.
+
+Free fonts (DejaVu Sans Mono)
+------------------------------------
+DejaVu Sans Mono is available as an alternative free font. Use the option `freefonts` to the `documentclass` command use this font instead.
 
 XeTeX
 -----
