@@ -41,9 +41,9 @@ to retrieve the `luximono` font.
 
 Please check the above instructions against the documentation for your TeX distribution. In particular, they have only been tested on GNU/Linux and Mac OS X - Windows users running MikTeX may have an easier graphical utility available.
 
-Free fonts (DejaVu Sans Mono)
+Free fonts
 ------------------------------------
-DejaVu Sans Mono is available as an alternative free font. Use the option `freefonts` to the `documentclass` command use this font instead.
+DejaVu Sans Mono is available as an alternative free font. Provide the option `dejavu` to the `documentclass` command to use this font instead.
 
 XeTeX
 -----
@@ -62,4 +62,3 @@ commands having been run in the preamble:
     \setsupervisor{SUPERVISOR}
     \setextrasupervisor{OPTIONAL SECOND SUPERVISOR}
     \setdate{HAND-IN DATE}
-

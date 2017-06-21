@@ -47,9 +47,9 @@
   \end{minipage}\end{shaded}
 }
 
-\newif\if@freefonts \@freefontsfalse
+\newif\if@dejavu \@dejavufalse
 
-\DeclareOption{freefonts}{\@freefontstrue}
+\DeclareOption{dejavu}{\@dejavutrue}
 \ProcessOptions\relax
 
 %% Get \maketitle to produce something nice for ITU
@@ -72,7 +72,7 @@
        {texgyrepagella-regular.otf}
     \setsansfont{PT Sans Narrow}
 
-    \if@freefonts
+    \if@dejavu
       \setmonofont[Scale=0.9]{DejaVu Sans Mono}
     \else
       % Luxi Mono is an attractive typewriter font with bold and italic
@@ -88,7 +88,7 @@
     % PT Sans Narrow for sans serif
     \usepackage{PTSansNarrow}
 
-    \if@freefonts
+    \if@dejavu
     \usepackage[scaled]{DejaVuSansMono}
     \else
     \usepackage[scaled]{luximono}
