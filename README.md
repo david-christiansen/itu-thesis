@@ -16,7 +16,6 @@ Features
 
 TODO (that I plan to do)
 ------------------------
- * Make dependencies on non-free fonts optional
  * Further prettification
  * Show all the needed info on the title page
 
@@ -42,6 +41,10 @@ to retrieve the `luximono` font.
 
 Please check the above instructions against the documentation for your TeX distribution. In particular, they have only been tested on GNU/Linux and Mac OS X - Windows users running MikTeX may have an easier graphical utility available.
 
+Free fonts
+------------------------------------
+DejaVu Sans Mono is available as an alternative free font. Provide the option `dejavu` to the `documentclass` command to use this font instead.
+
 XeTeX
 -----
 This package now has preliminary support for XeLaTeX. In particular, it correctly determines whether it should load Babel or Polyglossia, and it uses TrueType or Opentype versions of fonts if they are available and XeTeX is being used.
@@ -59,4 +62,3 @@ commands having been run in the preamble:
     \setsupervisor{SUPERVISOR}
     \setextrasupervisor{OPTIONAL SECOND SUPERVISOR}
     \setdate{HAND-IN DATE}
-
