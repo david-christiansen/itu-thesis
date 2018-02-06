@@ -52,16 +52,13 @@
 \DeclareOption{dejavu}{\@dejavutrue}
 \ProcessOptions\relax
 
+%%Acknowledgments environment
+\newenvironment{acknowledgements}
+{\renewcommand{\abstractname}{Acknowledgements}\abstract}
+{\endabstract}
+
 %% Get \maketitle to produce something nice for ITU
 \setlength{\droptitle}{5cm}
-
-%% More comprehensive math
-\usepackage{amsmath}
-\ifxetex
-    \usepackage{unicode-math}
-\else
-    \usepackage{amsfonts}
-\fi
 
 \ifxetex
     \usepackage{fontspec}
@@ -97,6 +94,45 @@
 
 
 \linespread{1.05} % palatino needs a bit more space
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Math environs and notation  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\ifxetex
+    \usepackage{unicode-math}
+\else
+    \usepackage{amsfonts}
+\fi
+\usepackage{amsthm,amssymb}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{observation}{Observation}[chapter]
+\newtheorem{example}{Example}[chapter]
+\newtheorem{open problem}{Open problem}[chapter]
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[chapter]
+
+% In order:
+% O symbol, Big-O, tilde O, small o, Big-Theta, Big-Omega
+\newcommand{\Osymbol}{{O}}
+\newcommand{\BO}[1]{\Osymbol\left(#1\right)}
+\newcommand{\TO}[1]{\tilde{\Osymbol}\left(#1\right)}
+\newcommand{\SO}[1]{{o}\left(#1\right)}
+\newcommand{\BT}[1]{{\Theta}\left(#1\right)}
+\newcommand{\BOM}[1]{\Omega\left(#1\right)}
+
+% inline versions without growing brackets:
+\newcommand{\BOx}[1]{\Osymbol(#1)}
+\newcommand{\TOx}[1]{\tilde{\Osymbol}(#1)}
+\newcommand{\SOx}[1]{{o}(#1)}
+\newcommand{\BTx}[1]{{\Theta}(#1)}
+\newcommand{\BOMx}[1]{\Omega(#1)}
+
 
 
 % Use paratype sans narrow for sans-serif fonts
